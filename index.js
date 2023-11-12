@@ -43,8 +43,10 @@ active_modem = selected
 }
 
 function send_sms(to_number, message_body) {
-let text_template = `text=\'${message_body}\',number=\'${to_number}\'`;
-let create_msg_cmd = `mmcli -m ${active_modem} --messaging-create-sms="${text_template}" -J`;
+message_body = message_body.replaceAll("\"", "\'")
+message_body = message_body.replaceAll("'", "'\\''")
+let text_template = `text="${message_body}\",number=${to_number}`;
+let create_msg_cmd = `mmcli -m ${active_modem} --messaging-create-sms='${text_template}' -J`;
 console.log(create_msg_cmd);
 let modemresp = child_process.execSync(create_msg_cmd, {encoding:"utf-8"});
 let unsent_msg_path = modemresp.split(":")[1]
