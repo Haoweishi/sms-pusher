@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start" : "export GOOGLE_APPLICATION_CREDENTIALS=\"/home/haowei/sms-server-10000.json\" && node index.js"
+    "start" : "export GOOGLE_APPLICATION_CREDENTIALS=\"credentials.json\" && node index.js"
   },
   "author": "",
   "license": "ISC",
